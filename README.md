@@ -18,22 +18,35 @@ With IaC, you can:
 
 ## 🚀 Getting Started
 
-### 1️⃣ Prerequisites
+### 1 Prerequisites
 Before you start, ensure you have:
 - [Terraform](https://developer.hashicorp.com/terraform/downloads) installed
 - AWS Account with IAM credentials (Access Key & Secret Key)
 - Git installed for version control
 
-### 2️⃣ Clone the Repository
+### 2 Clone the Repository
 ```bash
 git clone https://github.com/<your-username>/<repo-name>.git
 cd <repo-name>
 ```
 
-### 3  Initialize Terraform
+### 3 Initialize Terraform
 ```bash
 terraform init
 ```
-
-
-
+### 4 Validate Configuration
+```bash
+terraform validate
+```
+### 5 Plan Changes
+```bash
+terraform plan
+```
+### 6 Apply Changes
+```bash
+terraform apply 
+```
+### 7 Destory changes
+```bash
+terraform destory
+```
