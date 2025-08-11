@@ -1,6 +1,6 @@
 ## 📦  Terraform Import — Bring Your Existing Infrastructure into Terraform
 
-**When we start using Terraform, most of us think about creating new resources.
+When we start using Terraform, most of us think about creating new resources.
 But what if your infrastructure already exists? Maybe you have an EC2 instance, an S3 bucket, or a database that you created manually or with another tool.  
 
 ## What is Terraform Import?
