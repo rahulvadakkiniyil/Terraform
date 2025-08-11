@@ -1,6 +1,5 @@
----
 
-## ☁️ What is AWS EC2?
+## What is AWS EC2?
 
 **Amazon Elastic Compute Cloud (EC2)** is a web service provided by AWS that offers secure, resizable compute capacity in the cloud.  
 It allows you to run virtual servers (called **instances**) on demand, making it easy to scale applications up or down based on your needs.
@@ -13,5 +12,3 @@ It allows you to run virtual servers (called **instances**) on demand, making it
 - **Pricing Models** – On-demand, Reserved, Spot, and Savings Plans.
 
 When using Terraform, you can define EC2 instances in `.tf` files and automate their provisioning without logging into the AWS Console.
-
----
