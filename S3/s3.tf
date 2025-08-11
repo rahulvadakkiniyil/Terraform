@@ -1,9 +1,9 @@
 resource "aws_s3_bucket" "my_s3_bucket" {
-  bucket = "rahulvadakkiniyil"
+  bucket = "yourbucketname"
   acl = "private"
 
   tags = {
-    Name        = "rahulvadakkiniyil"
+    Name        = "bucketname"
     Environment = "test"
   }
 }
