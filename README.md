@@ -1,52 +1,52 @@
-# Infrastructure as Code (IaC) with Terraform
+# Terraform Provisioners Explained — A Beginner’s Guide
+If you’ve been playing around with Terraform, you already know that it’s a tool to define and manage your infrastructure as code.
+But sometimes, just creating infrastructure isn’t enough — you might need to run scripts, install packages, or configure things after the resource is created.
 
-This repository contains examples, best practices, and reusable modules for managing cloud infrastructure using **Infrastructure as Code (IaC)** with **Terraform**.
+##  What is a Terraform Provisioner?
 
----
+In simple words:
+A provisioner in Terraform lets you execute scripts or commands on a resource after it’s created or before it’s destroyed.
 
-## 📌 Introduction
+## Types of Provisioners
+Terraform offers a few different provisioners. Here are the most common:
 
-Infrastructure as Code (IaC) is the practice of managing and provisioning infrastructure through machine-readable configuration files, rather than manual processes.  
-With IaC, you can:
-- Version control your infrastructure.
-- Automate provisioning and configuration.
-- Ensure consistency across environments.
+1) local-exec
+   Runs a command on the machine where Terraform is executed (your local system or CI/CD runner).
 
-**Terraform** is an open-source IaC tool that enables you to define cloud and on-prem resources using a declarative configuration language (HCL – HashiCorp Configuration Language).
+   Example:
 
----
+   ```
+   resource "aws_instance" "my_vm" {
+   ami           = "ami-0c55b159cbfafe1f0"
+   instance_type = "t2.micro"
 
-## 🚀 Getting Started
+   provisioner "local-exec" {
+    command = "echo Instance ${self.id} created successfully!"
+   }
+   }
+   ```
+2) remote exec
+   Runs commands on the remote resource after it’s created. Usually used for configuring servers right after they start.
 
-### 1 Prerequisites
-Before you start, ensure you have:
-- [Terraform](https://developer.hashicorp.com/terraform/downloads) installed
-- AWS Account with IAM credentials (Access Key & Secret Key)
-- Git installed for version control
+   Example:
+   
+   ```
+   resource "aws_instance" "my_vm" {
+   ami           = "ami-0c55b159cbfafe1f0"
+   instance_type = "t2.micro"
 
-### 2 Clone the Repository
-```bash
-git clone https://github.com/<your-username>/<repo-name>.git
-cd <repo-name>
-```
+   provisioner "remote-exec" {
+    inline = [
+      "sudo apt-get update -y",
+      "sudo apt-get install nginx -y"
+    ]
+   }
 
-### 3 Initialize Terraform
-```bash
-terraform init
-```
-### 4 Validate Configuration
-```bash
-terraform validate
-```
-### 5 Plan Changes
-```bash
-terraform plan
-```
-### 6 Apply Changes
-```bash
-terraform apply 
-```
-### 7 Destory changes
-```bash
-terraform destory
-```
+   connection {
+    type     = "ssh"
+    user     = "ubuntu"
+    private_key = file("~/.ssh/id_rsa")
+    host     = self.public_ip
+   }
+   }
+   ```
