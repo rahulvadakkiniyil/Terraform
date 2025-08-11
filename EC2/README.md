@@ -12,3 +12,7 @@ It allows you to run virtual servers (called **instances**) on demand, making it
 - **Pricing Models** – On-demand, Reserved, Spot, and Savings Plans.
 
 When using Terraform, you can define EC2 instances in `.tf` files and automate their provisioning without logging into the AWS Console.
+
+## Reference
+
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
