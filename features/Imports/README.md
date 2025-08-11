@@ -29,10 +29,9 @@ Important: It does not automatically generate the .tf code — you still have to
 ## Run the Import Command
 
 ```bash
-terraform import aws_instance.my_vm instance_id
+terraform import aws_instance.example instance_id
 ```
 
 ## Reference
 
-[https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
-https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html](https://developer.hashicorp.com/terraform/cli/import)
+https://developer.hashicorp.com/terraform/language/resources/provisioners/connection
