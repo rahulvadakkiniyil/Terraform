@@ -16,3 +16,4 @@ When using Terraform, you can define EC2 instances in `.tf` files and automate t
 ## Reference
 
 https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html
