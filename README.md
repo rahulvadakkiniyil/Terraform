@@ -50,3 +50,28 @@ Terraform offers a few different provisioners. Here are the most common:
    }
    }
    ```
+
+3) File Provisioner
+   Uploads files from your local machine to the remote server.
+
+   Example":
+
+   ```
+   resource "aws_instance" "my_vm" {
+   ami           = "ami-0c55b159cbfafe1f0"
+   instance_type = "t2.micro"
+
+   provisioner "file" {
+    source      = "app.conf"
+    destination = "/tmp/app.conf"
+   }
+
+   connection {
+    type        = "ssh"
+    user        = "ubuntu"
+    private_key = file("~/.ssh/id_rsa")
+    host        = self.public_ip
+   }
+   }
+
+   ```
