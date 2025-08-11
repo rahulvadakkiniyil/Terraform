@@ -28,13 +28,12 @@ Before you start, ensure you have:
 ```bash
 git clone https://github.com/<your-username>/<repo-name>.git
 cd <repo-name>
-
------
-
-# Initialize Terraform
-
-```bash
-   terraform init
 ```
+
+### 3  Initialize Terraform
+```bash
+terraform init
+```
+
 
 
