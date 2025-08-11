@@ -34,4 +34,4 @@ terraform import aws_instance.example instance_id
 
 ## Reference
 
-https://developer.hashicorp.com/terraform/language/resources/provisioners/connection
+https://developer.hashicorp.com/terraform/cli/import/usage
