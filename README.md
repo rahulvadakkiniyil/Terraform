@@ -16,4 +16,6 @@ It is often used for:
 When using Terraform, you can automate bucket creation, lifecycle rules, and permissions to ensure consistent storage management.
 
 ## Reference
+
 https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
+https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html
