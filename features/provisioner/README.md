@@ -1,21 +1,77 @@
-## 📦 What is AWS S3?
+# Terraform Provisioners Explained — A Beginner’s Guide
+If you’ve been playing around with Terraform, you already know that it’s a tool to define and manage your infrastructure as code.
+But sometimes, just creating infrastructure isn’t enough — you might need to run scripts, install packages, or configure things after the resource is created.
 
-**Amazon Simple Storage Service (S3)** is an object storage service that provides industry-leading scalability, data availability, security, and performance.  
-It is often used for:
-- Storing backups, static assets, and large datasets.
-- Hosting static websites.
-- Serving as a **Terraform remote backend** for state files.
+##  What is a Terraform Provisioner?
 
-**Key Features of AWS S3:**
-- **Scalability** – Store virtually unlimited data.
-- **Durability** – 99.999999999% (11 9’s) durability.
-- **Security** – IAM policies, bucket policies, and encryption options.
-- **Storage Classes** – Standard, Intelligent-Tiering, Glacier, etc.
-- **Event Notifications** – Trigger AWS Lambda or other services.
+In simple words:
+A provisioner in Terraform lets you execute scripts or commands on a resource after it’s created or before it’s destroyed.
 
-When using Terraform, you can automate bucket creation, lifecycle rules, and permissions to ensure consistent storage management.
+## Types of Provisioners
+Terraform offers a few different provisioners. Here are the most common:
 
-## Reference
+1) local-exec
+   Runs a command on the machine where Terraform is executed (your local system or CI/CD runner).
 
-https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
-https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html
+   Example:
+
+   ```
+   resource "aws_instance" "my_vm" {
+   ami           = "ami-0c55b159cbfafe1f0"
+   instance_type = "t2.micro"
+
+   provisioner "local-exec" {
+    command = "echo Instance ${self.id} created successfully!"
+   }
+   }
+   ```
+2) remote exec
+   Runs commands on the remote resource after it’s created. Usually used for configuring servers right after they start.
+
+   Example:
+   
+   ```
+   resource "aws_instance" "my_vm" {
+   ami           = "ami-0c55b159cbfafe1f0"
+   instance_type = "t2.micro"
+
+   provisioner "remote-exec" {
+    inline = [
+      "sudo apt-get update -y",
+      "sudo apt-get install nginx -y"
+    ]
+   }
+
+   connection {
+    type     = "ssh"
+    user     = "ubuntu"
+    private_key = file("~/.ssh/id_rsa")
+    host     = self.public_ip
+   }
+   }
+   ```
+
+3) File Provisioner
+   Uploads files from your local machine to the remote server.
+
+   Example":
+
+   ```
+   resource "aws_instance" "my_vm" {
+   ami           = "ami-0c55b159cbfafe1f0"
+   instance_type = "t2.micro"
+
+   provisioner "file" {
+    source      = "app.conf"
+    destination = "/tmp/app.conf"
+   }
+
+   connection {
+    type        = "ssh"
+    user        = "ubuntu"
+    private_key = file("~/.ssh/id_rsa")
+    host        = self.public_ip
+   }
+   }
+
+   ```
