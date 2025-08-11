@@ -28,7 +28,7 @@ Important: It does not automatically generate the .tf code — you still have to
 ## Run the Import Command
 
 ```bash
-terraform import aws_instance.my_vm i-0abcd1234efgh5678
+terraform import aws_instance.my_vm instance_id
 ```
 
 ## Reference
