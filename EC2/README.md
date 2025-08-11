@@ -1,52 +1,17 @@
-# Infrastructure as Code (IaC) with Terraform
-
-This repository contains examples, best practices, and reusable modules for managing cloud infrastructure using **Infrastructure as Code (IaC)** with **Terraform**.
-
 ---
 
-## 📌 Introduction
+## ☁️ What is AWS EC2?
 
-Infrastructure as Code (IaC) is the practice of managing and provisioning infrastructure through machine-readable configuration files, rather than manual processes.  
-With IaC, you can:
-- Version control your infrastructure.
-- Automate provisioning and configuration.
-- Ensure consistency across environments.
+**Amazon Elastic Compute Cloud (EC2)** is a web service provided by AWS that offers secure, resizable compute capacity in the cloud.  
+It allows you to run virtual servers (called **instances**) on demand, making it easy to scale applications up or down based on your needs.
 
-**Terraform** is an open-source IaC tool that enables you to define cloud and on-prem resources using a declarative configuration language (HCL – HashiCorp Configuration Language).
+**Key Features of AWS EC2:**
+- **Variety of Instance Types** – General purpose, compute-optimized, memory-optimized, GPU, etc.
+- **Scalability** – Easily increase or decrease capacity.
+- **Elastic IPs** – Static IP addresses for your instances.
+- **Security** – Control inbound/outbound traffic with Security Groups.
+- **Pricing Models** – On-demand, Reserved, Spot, and Savings Plans.
+
+When using Terraform, you can define EC2 instances in `.tf` files and automate their provisioning without logging into the AWS Console.
 
 ---
-
-## 🚀 Getting Started
-
-### 1 Prerequisites
-Before you start, ensure you have:
-- [Terraform](https://developer.hashicorp.com/terraform/downloads) installed
-- AWS Account with IAM credentials (Access Key & Secret Key)
-- Git installed for version control
-
-### 2 Clone the Repository
-```bash
-git clone https://github.com/<your-username>/<repo-name>.git
-cd <repo-name>
-```
-
-### 3 Initialize Terraform
-```bash
-terraform init
-```
-### 4 Validate Configuration
-```bash
-terraform validate
-```
-### 5 Plan Changes
-```bash
-terraform plan
-```
-### 6 Apply Changes
-```bash
-terraform apply 
-```
-### 7 Destory changes
-```bash
-terraform destory
-```
