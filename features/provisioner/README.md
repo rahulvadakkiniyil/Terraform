@@ -75,3 +75,6 @@ Terraform offers a few different provisioners. Here are the most common:
    }
 
    ```
+# Reference
+
+https://developer.hashicorp.com/terraform/language/resources/provisioners/connection
