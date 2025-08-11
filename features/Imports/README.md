@@ -7,14 +7,14 @@ But what if your infrastructure already exists? Maybe you have an EC2 instance, 
 In simple terms:
 terraform import lets you connect an existing resource in your cloud provider to your Terraform code — without recreating it.
 
-##🛠 Why Use Terraform Import?
+🛠 ##Why Use Terraform Import?
 You manually created a resource (e.g., in AWS console) and now want Terraform to manage it.
 
 You’re migrating infrastructure from another IaC tool (like CloudFormation or Pulumi) to Terraform.
 
 You inherited infrastructure from another team and want to bring it under Terraform management.
 
-##🔍 How Terraform Import Works
+🔍 ##How Terraform Import Works
 When you run terraform import, Terraform:
 
 Looks at your Terraform configuration to see what type of resource you want to manage.
