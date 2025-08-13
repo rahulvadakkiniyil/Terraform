@@ -1,4 +1,4 @@
-## 2️⃣ Terraform Workspaces
+## Terraform Workspaces
 
 ### 🌟 What is a Workspace?
 
