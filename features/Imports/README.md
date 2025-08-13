@@ -124,6 +124,6 @@ You can load a module from:
   source = "./modules/ec2"
   ```
 
-#Reference
+# Reference
 
 https://developer.hashicorp.com/terraform/language/modules
