@@ -124,4 +124,6 @@ You can load a module from:
   source = "./modules/ec2"
   ```
 
-Do you want me to also make a **"Terraform Modules Hands-on Lab"** README where we create one module and use it in **dev** and **prod** environments so students can practice? That would make this even more beginner-friendly.
+#Reference
+
+https://developer.hashicorp.com/terraform/language/modules
