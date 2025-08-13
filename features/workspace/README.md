@@ -68,21 +68,6 @@ If workspace is `prod`, bucket name becomes:
 
 ---
 
-## 🎯 Best Practices
+## Reference 
 
-* Use **modules** to avoid repeating code across projects.
-* Use **workspaces** for environment separation — but for complex setups, consider separate folders or repositories.
-* Combine both:
-
-  * A module defines *how* infrastructure is built.
-  * A workspace decides *where* and *for which environment* it is built.
-
----
-
-💡 **Pro Tip**:
-Many teams use **modules + workspaces** with a remote backend (like AWS S3 + DynamoDB) so multiple engineers can safely work on infrastructure together.
-
----
-
-If you want, I can make a **hands-on lab README** that shows how to create an AWS EC2 **module**, and then deploy it in **dev** and **prod** environments using **workspaces** — so it’s a real-world, end-to-end example. Would you like me to prepare that next?
-
+https://developer.hashicorp.com/terraform/language/state/workspaces
