@@ -1,8 +1,4 @@
----
-
-# 📦 Terraform Modules & 🗂 Terraform Workspaces — Beginner’s Guide
-
-## 1️⃣ Terraform Modules
+## Terraform Modules
 
 ### 🌟 What is a Module?
 
