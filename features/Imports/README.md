@@ -47,7 +47,7 @@ resource "aws_instance" "my_ec2" {
 ### Step 3 — Run the import command
 
 ```bash
-terraform import aws_instance.my_ec2 i-0abcd1234ef567890
+terraform import aws_instance.my_ec2 instance_id
 ```
 
 ### Step 4 — Sync your `.tf` code
