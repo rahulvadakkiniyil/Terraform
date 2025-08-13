@@ -84,5 +84,3 @@ terraform import [options] ADDRESS ID
 # Reference
 
 https://developer.hashicorp.com/terraform/cli/import
-
-If you want, I can make a **step-by-step AWS EC2 import lab** where we start with a manually created instance and fully migrate it into Terraform in under 15 minutes. That would make learning this command much easier for beginners.
