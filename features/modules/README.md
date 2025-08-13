@@ -83,3 +83,7 @@ Run:
 terraform init
 terraform apply
 ```
+
+# Reference
+
+https://developer.hashicorp.com/terraform/language/modules
