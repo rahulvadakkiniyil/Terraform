@@ -86,4 +86,5 @@ resource "aws_instance" "my_vm" {
 
 # Reference
 
-https://www.udemy.com/course/master-terraform-with-aws/learn/lecture/15635128?start=45#overview
+* https://www.udemy.com/course/master-terraform-with-aws/learn/lecture/15635128?start=45#overview
+* https://github.com/terraform-aws-modules
