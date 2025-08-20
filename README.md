@@ -83,4 +83,7 @@ resource "aws_instance" "my_vm" {
    ```bash
    terraform destroy
    ```
-If you want, I can also make a **"Terraform + IaC crash course" README** where all these topics (including `terraform import` and provisioners) are in one file so beginners can learn everything in a single lab. Would you like me to prepare that next?
+
+# Reference
+
+https://www.udemy.com/course/master-terraform-with-aws/learn/lecture/15635128?start=45#overview
