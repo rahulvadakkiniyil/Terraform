@@ -175,5 +175,6 @@ launch_template_id = "lt-0ab12cd34efgh5678"
 * [AWS Auto Scaling](https://docs.aws.amazon.com/autoscaling/)
 * [Launch Templates](https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchTemplates.html)
 * [Manage AWS Auto Scaling Groups](https://developer.hashicorp.com/terraform/tutorials/aws/aws-asg)
+* [aws_launch_configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_configuration.html)
 
 
