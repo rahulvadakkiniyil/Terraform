@@ -1,4 +1,3 @@
-
 resource "aws_alb" "webapp_load_balancer" {
   load_balancer_type = "application"
   name            = "Production-WebApp-LoadBalancer"
