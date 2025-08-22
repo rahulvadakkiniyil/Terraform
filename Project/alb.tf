@@ -2,13 +2,13 @@ resource "aws_alb" "common_load_balancer" {
   load_balancer_type = "application"
   name            = "Common-LoadBalancer"
   internal        = false
-  security_groups = ["${aws_security_group.elb_security_group.id}"]
+  security_groups = ["${aws_security_group.alb_sg.id}"]
 
 tags = {
     Name = "common_load_balancer"
   }
   subnets = "${aws_subnet.public_subnets.*.id}"
-  depends_on = [aws_subnet.public_subnets,aws_security_group.elb_security_group]
+  depends_on = ["aws_subnet.public_subnets","aws_security_group.alb_sg"]
 }
 
 
@@ -51,4 +51,45 @@ resource "aws_alb_listener" "front_end" {
   }
  
   depends_on = ["aws_alb.common_load_balancer","aws_alb_target_group.native"]
+}
+
+resource "aws_alb_target_group" "pulsar" {
+	name	= "pulsar"
+	vpc_id	= "${aws_vpc.main.id}"
+	port	= "8080"
+	protocol	= "HTTP"
+	health_check {
+                path = "/"
+                port = "8080"
+                protocol = "HTTP"
+                healthy_threshold = 5
+                unhealthy_threshold = 2
+                interval = 5
+                timeout = 4
+                matcher = "200"
+        } 
+    tags = {
+        Name = "pulsar"
+    }
+  depends_on = [aws_vpc.main]
+}
+
+resource "aws_alb_target_group_attachment" "pulsar_targetgroup_alb" {
+  target_group_arn = "${aws_alb_target_group.pulsar.arn}"
+  count    = "${length(var.public_subnet_cidr)}"
+  port     = 8080
+  target_id        = "${aws_instance.my_ec2s.id}"
+}
+
+resource "aws_alb_listener" "pulsar" {
+  load_balancer_arn = "${aws_alb.common_load_balancer.arn}"
+  port              = "8080"
+  protocol          = "HTTP"
+  
+  default_action {
+    type             = "forward"
+    target_group_arn = "${aws_alb_target_group.pulsar.arn}"
+  }
+ 
+  depends_on = ["aws_alb.common_load_balancer","aws_alb_target_group.pulsar"]
 }
