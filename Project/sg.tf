@@ -42,6 +42,7 @@ resource "aws_security_group" "alb_sg" {
 resource "aws_security_group" "application_sg"{
   name = "application"
   description = "Allow"
+  vpc_id      = aws_vpc.main.id
 
   egress{
     from_port = 0
@@ -61,6 +62,7 @@ resource "aws_security_group" "application_sg"{
 resource "aws_security_group" "native_sg" {
   name        = "native-sg"
   description = "Allow traffic from ALB, Pulsar, and Admin"
+  vpc_id      = aws_vpc.main.id
 
   egress {
     from_port   = 0
@@ -81,6 +83,7 @@ resource "aws_security_group" "native_sg" {
 resource "aws_security_group" "pulsar_sg" {
   name        = "pulsar-sg"
   description = "Allow Pulsar traffic from ALB only"
+  vpc_id      = aws_vpc.main.id
 
   egress {
     from_port   = 0
@@ -101,6 +104,7 @@ resource "aws_security_group" "pulsar_sg" {
 resource "aws_security_group" "admin_sg" {
   name        = "admin-sg"
   description = "Allow Admin traffic from ALB only"
+  vpc_id      = aws_vpc.main.id
 
   egress {
     from_port   = 0

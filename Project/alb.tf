@@ -77,7 +77,7 @@ resource "aws_alb_target_group" "pulsar" {
 resource "aws_alb_target_group_attachment" "pulsar_targetgroup_alb" {
   target_group_arn = "${aws_alb_target_group.pulsar.arn}"
   count    = "${length(var.public_subnet_cidr)}"
-  port     = 8080
+  port     = 80
   target_id        = "${aws_instance.my_ec2s.id}"
 }
 
