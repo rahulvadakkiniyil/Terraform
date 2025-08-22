@@ -13,14 +13,6 @@ resource "aws_security_group" "alb_sg" {
     cidr_blocks = ["0.0.0.0/0"]
     description = "Allow HTTP from anywhere"
   }
-   ingress {
-    from_port   = 8080
-    to_port     = 8080
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-    description = "Allow HTTP from anywhere"
-  }
-
   egress {
     from_port   = 0
     to_port     = 0
@@ -305,4 +297,16 @@ resource "aws_security_group_rule" "allow_admin_to_application" {
   protocol                 = "-1"
   source_security_group_id = aws_security_group.admin_sg.id
   security_group_id        = aws_security_group.application_sg.id
+}
+
+############################
+# Allow ALL Traffic from Native SG → ALB SG
+############################
+resource "aws_security_group_rule" "allow_native_to_alb" {
+  type                     = "ingress"
+  from_port                = 0
+  to_port                  = 0
+  protocol                 = "-1"
+  source_security_group_id = aws_security_group.native_sg.id
+  security_group_id        = aws_security_group.alb_sg.id
 }
