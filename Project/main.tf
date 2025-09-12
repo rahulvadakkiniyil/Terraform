@@ -1,32 +1,23 @@
-resource "aws_vpc" "main" {
-  cidr_block       = "10.0.0.0/16"
-  instance_tenancy = "default"
-
-  tags = {
-    Name = "main"
-  }
-}
-resource "aws_internet_gateway" "main"{
-  vpc_id = aws_vpc.main.id
-  tags = {
-    Name = "igw"
+terraform {
+  required_version = ">= 1.5.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
   }
 }
 
-resource "aws_subnet" "public" {
-  vpc_id     = aws_vpc.main.id
-  cidr_block = "10.0.1.0/24"
-
-  tags = {
-    Name = "public"
-  }
+provider "aws" {
+  region = "ap-south-1"
 }
 
-resource "aws_subnet" "private" {
-  vpc_id     = aws_vpc.main.id
-  cidr_block = "10.0.10.0/24"
+# Call Networking module
+module "networking" {
+  source = "./networking"
+}
 
-  tags = {
-    Name = "private"
-  }
+# Call Storage module
+module "storage" {
+  source = "./storage"
 }
