@@ -5,6 +5,12 @@ resource "aws_s3_bucket" "storage" {
     Name        = "My bucket"
     Environment = "Dev"
   }
+   backend "s3" {
+    bucket = "my-terraform-state-bucket"  # replace with your bucket name
+    key    = "terraform.tfstate"           # path inside the bucket
+    region = "us-east-2"                   # replace with your region
+    # encrypt = true  # optional, enables server-side encryption
+  }
 }
 
 resource "aws_s3_bucket_public_access_block" "storage" {
